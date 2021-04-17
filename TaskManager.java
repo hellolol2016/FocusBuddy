@@ -31,25 +31,23 @@ public class TaskManager {
         } else if(response.equals("c")){
             System.out.println("What topic would you like to access?");//CHECK
             String topic = csc.next();
-            TopicsUtil(topic, csc, fsc, pw);
+            TopicsUtil(topic, csc, pw, Topics);
         } else {
             System.exit(0); //QUITS
         }
         
     } 
     //LIST OF TOPICS USER CHOOSES FROM IN CATEGORY
-    public static void TopicsUtil(String topic, Scanner csc, Scanner fsc, PrintWriter pw) throws Exception{
-        ArrayList<String> topics = new ArrayList<String>();
-        while(fsc.hasNext()){
-            topics.add(fsc.next());
+    public static void TopicsUtil(String topic, Scanner csc, PrintWriter pw, ArrayList<String> Topics) throws Exception{
+        System.out.println("Welcome to your topics, which one would you like to access? (Enter a number)");
+        for(int i = 0; i < Topics.size(); i++){
+            System.out.println(i + " " + Topics.get(i));
         }
-        
-        if(topics.contains(topic)){
-            pw.println(topics.toString());
-        }
-
-        pw.close();
+        int wantedTopicIndex = csc.nextInt();
+        String wantedTopic = Topics.get(wantedTopicIndex);
     }   
+
+
 
     public static void checkTopics(Scanner fsc){
         //
